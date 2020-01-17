@@ -21,11 +21,11 @@ mom1 = cube.spectral_axis[cube.argmax(axis=0).ravel()]
 mom1.shape = mom0.shape
 ```
 
-Next, we'll create a label map by looking at 60-90th percentiles of the data and assigning each position in the map to that bin.  Your label map can vary:
+Next, we'll create a label map by looking at 60-100th percentiles of the data and assigning each position in the map to that bin.  Your label map can vary:
 
 ```
 pcts = np.nanpercentile(mom0.value,
-                        np.linspace(6, 100, 5))
+                        np.linspace(60, 100, 5))
 bins = np.digitize(mom0.value, pcts)
 bins[bins==5] = 0
 ```
