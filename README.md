@@ -30,7 +30,7 @@ bins = np.digitize(mom0.value, pcts)
 bins[bins==5] = 0
 ```
 Note that we have the convention that labels with a value of 0 are not included in the stack (i.e., they are "background").  This makes a map that looks like this:
-
+![Spectral Stack](/imgs/binsmap.png)
 Next, let's stack!  We pass in the data `cube`, the bins we want stacked spectra in (`bins`) and the estimate of where the centre of the spectrum should be (`mom1`).
 
 ```
@@ -41,6 +41,7 @@ stack, labelvals = stacking.BinByLabel(cube, bins, mom1,
 
 Finally, we can plot the average spectra:
 
+
 ```
 for d in stack:
     plt.plot(d['spectral_axis'],d['spectrum'], label="Label={0}".format(d['label']))
@@ -49,3 +50,4 @@ plt.xlabel('Spectral axis ({0})'.format(cube.spectral_axis.unit.to_string()))
 plt.ylabel('Brightness ({0})'.format(cube.unit.to_string()))
 ```
 This gives the resulting plot:
+![Spectral Stack](/imgs/example_spex.png)
